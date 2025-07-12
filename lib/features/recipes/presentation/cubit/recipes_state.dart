@@ -1,12 +1,6 @@
 part of 'recipes_cubit.dart';
 
-enum RecipesSortType {
-  none,
-  ratingAsc,
-  ratingDesc,
-  caloriesAsc,
-  caloriesDesc,
-}
+enum RecipesSortType { none, ratingAsc, ratingDesc, caloriesAsc, caloriesDesc }
 
 abstract class RecipesState extends Equatable {
   const RecipesState();

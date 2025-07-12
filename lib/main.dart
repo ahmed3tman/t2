@@ -10,15 +10,15 @@ import 'core/theme/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize Hydrated Bloc
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
-  
+
   // Initialize dependency injection
   await configureDependencies();
-  
+
   runApp(const PetRecipeExplorerApp());
 }
 

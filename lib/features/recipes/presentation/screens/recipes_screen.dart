@@ -97,7 +97,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                         const SizedBox(height: 16),
                         ElevatedButton(
                           onPressed: () {
-                            context.read<RecipesCubit>().fetchRecipes(refresh: true);
+                            context.read<RecipesCubit>().fetchRecipes(
+                              refresh: true,
+                            );
                           },
                           child: const Text('Retry'),
                         ),
@@ -107,7 +109,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 } else if (state is RecipesSuccess) {
                   return RefreshIndicator(
                     onRefresh: () {
-                      return context.read<RecipesCubit>().fetchRecipes(refresh: true);
+                      return context.read<RecipesCubit>().fetchRecipes(
+                        refresh: true,
+                      );
                     },
                     child: ListView.builder(
                       controller: _scrollController,
@@ -117,9 +121,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                         if (index == state.recipes.length) {
                           return const Padding(
                             padding: EdgeInsets.all(16.0),
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                            child: Center(child: CircularProgressIndicator()),
                           );
                         }
 
@@ -130,7 +132,8 @@ class _RecipesScreenState extends State<RecipesScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RecipeDetailScreen(recipe: recipe),
+                                builder: (context) =>
+                                    RecipeDetailScreen(recipe: recipe),
                               ),
                             );
                           },

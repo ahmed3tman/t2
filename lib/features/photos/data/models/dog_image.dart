@@ -5,18 +5,11 @@ part 'dog_image.g.dart';
 
 @freezed
 class DogImage with _$DogImage {
-  const factory DogImage({
-    required String message,
-    required String status,
-  }) = _DogImage;
+  const factory DogImage({required String message, required String status}) =
+      _DogImage;
 
   factory DogImage.fromJson(Map<String, dynamic> json) =>
       _$DogImageFromJson(json);
 }
 
-enum PhotoSource {
-  dog,
-  cat,
-  catGif,
-  unsplash,
-}
+enum PhotoSource { dog, cat, catGif, unsplash }

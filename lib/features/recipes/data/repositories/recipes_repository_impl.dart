@@ -23,24 +23,26 @@ class RecipesRepositoryImpl implements RecipesRepository {
       );
 
       return response.recipes
-          .map((recipe) => RecipeEntity(
-                id: recipe.id,
-                name: recipe.name,
-                ingredients: recipe.ingredients,
-                instructions: recipe.instructions,
-                prepTimeMinutes: recipe.prepTimeMinutes,
-                cookTimeMinutes: recipe.cookTimeMinutes,
-                servings: recipe.servings,
-                difficulty: recipe.difficulty,
-                cuisine: recipe.cuisine,
-                caloriesPerServing: recipe.caloriesPerServing,
-                tags: recipe.tags,
-                userId: recipe.userId,
-                image: recipe.image,
-                rating: recipe.rating,
-                reviewCount: recipe.reviewCount,
-                mealType: recipe.mealType,
-              ))
+          .map(
+            (recipe) => RecipeEntity(
+              id: recipe.id,
+              name: recipe.name,
+              ingredients: recipe.ingredients,
+              instructions: recipe.instructions,
+              prepTimeMinutes: recipe.prepTimeMinutes,
+              cookTimeMinutes: recipe.cookTimeMinutes,
+              servings: recipe.servings,
+              difficulty: recipe.difficulty,
+              cuisine: recipe.cuisine,
+              caloriesPerServing: recipe.caloriesPerServing,
+              tags: recipe.tags,
+              userId: recipe.userId,
+              image: recipe.image,
+              rating: recipe.rating,
+              reviewCount: recipe.reviewCount,
+              mealType: recipe.mealType,
+            ),
+          )
           .toList();
     } catch (e) {
       throw Exception('Failed to get recipes: $e');

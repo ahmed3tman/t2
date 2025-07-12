@@ -37,11 +37,13 @@ class RecipesCubit extends Cubit<RecipesState> {
       if (_currentPage == 0) {
         emit(const RecipesLoading());
       } else {
-        emit(RecipesSuccess(
-          recipes: _filteredRecipes,
-          hasMore: _hasMoreData,
-          isLoadingMore: true,
-        ));
+        emit(
+          RecipesSuccess(
+            recipes: _filteredRecipes,
+            hasMore: _hasMoreData,
+            isLoadingMore: true,
+          ),
+        );
       }
 
       final recipes = await _repository.getRecipes(
@@ -58,11 +60,13 @@ class RecipesCubit extends Cubit<RecipesState> {
 
       _applyFiltersAndSort();
 
-      emit(RecipesSuccess(
-        recipes: _filteredRecipes,
-        hasMore: _hasMoreData,
-        isLoadingMore: false,
-      ));
+      emit(
+        RecipesSuccess(
+          recipes: _filteredRecipes,
+          hasMore: _hasMoreData,
+          isLoadingMore: false,
+        ),
+      );
     } catch (e) {
       emit(RecipesError(e.toString()));
     }
@@ -71,50 +75,60 @@ class RecipesCubit extends Cubit<RecipesState> {
   void searchRecipes(String query) {
     _searchQuery = query.toLowerCase();
     _applyFiltersAndSort();
-    emit(RecipesSuccess(
-      recipes: _filteredRecipes,
-      hasMore: _hasMoreData,
-      isLoadingMore: false,
-    ));
+    emit(
+      RecipesSuccess(
+        recipes: _filteredRecipes,
+        hasMore: _hasMoreData,
+        isLoadingMore: false,
+      ),
+    );
   }
 
   void filterByCuisine(String? cuisine) {
     _selectedCuisine = cuisine;
     _applyFiltersAndSort();
-    emit(RecipesSuccess(
-      recipes: _filteredRecipes,
-      hasMore: _hasMoreData,
-      isLoadingMore: false,
-    ));
+    emit(
+      RecipesSuccess(
+        recipes: _filteredRecipes,
+        hasMore: _hasMoreData,
+        isLoadingMore: false,
+      ),
+    );
   }
 
   void filterByDifficulty(String? difficulty) {
     _selectedDifficulty = difficulty;
     _applyFiltersAndSort();
-    emit(RecipesSuccess(
-      recipes: _filteredRecipes,
-      hasMore: _hasMoreData,
-      isLoadingMore: false,
-    ));
+    emit(
+      RecipesSuccess(
+        recipes: _filteredRecipes,
+        hasMore: _hasMoreData,
+        isLoadingMore: false,
+      ),
+    );
   }
 
   void sortRecipes(RecipesSortType sortType) {
     _sortType = sortType;
     _applyFiltersAndSort();
-    emit(RecipesSuccess(
-      recipes: _filteredRecipes,
-      hasMore: _hasMoreData,
-      isLoadingMore: false,
-    ));
+    emit(
+      RecipesSuccess(
+        recipes: _filteredRecipes,
+        hasMore: _hasMoreData,
+        isLoadingMore: false,
+      ),
+    );
   }
 
   void _applyFiltersAndSort() {
     _filteredRecipes = _allRecipes.where((recipe) {
-      final matchesSearch = _searchQuery.isEmpty ||
+      final matchesSearch =
+          _searchQuery.isEmpty ||
           recipe.name.toLowerCase().contains(_searchQuery);
-      final matchesCuisine = _selectedCuisine == null ||
-          recipe.cuisine == _selectedCuisine;
-      final matchesDifficulty = _selectedDifficulty == null ||
+      final matchesCuisine =
+          _selectedCuisine == null || recipe.cuisine == _selectedCuisine;
+      final matchesDifficulty =
+          _selectedDifficulty == null ||
           recipe.difficulty == _selectedDifficulty;
 
       return matchesSearch && matchesCuisine && matchesDifficulty;
@@ -129,10 +143,14 @@ class RecipesCubit extends Cubit<RecipesState> {
         _filteredRecipes.sort((a, b) => b.rating.compareTo(a.rating));
         break;
       case RecipesSortType.caloriesAsc:
-        _filteredRecipes.sort((a, b) => a.caloriesPerServing.compareTo(b.caloriesPerServing));
+        _filteredRecipes.sort(
+          (a, b) => a.caloriesPerServing.compareTo(b.caloriesPerServing),
+        );
         break;
       case RecipesSortType.caloriesDesc:
-        _filteredRecipes.sort((a, b) => b.caloriesPerServing.compareTo(a.caloriesPerServing));
+        _filteredRecipes.sort(
+          (a, b) => b.caloriesPerServing.compareTo(a.caloriesPerServing),
+        );
         break;
       case RecipesSortType.none:
         break;
@@ -144,6 +162,7 @@ class RecipesCubit extends Cubit<RecipesState> {
   }
 
   List<String> get availableDifficulties {
-    return _allRecipes.map((recipe) => recipe.difficulty).toSet().toList()..sort();
+    return _allRecipes.map((recipe) => recipe.difficulty).toSet().toList()
+      ..sort();
   }
 }

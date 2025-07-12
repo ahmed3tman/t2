@@ -22,7 +22,9 @@ class RecipeShimmer extends StatelessWidget {
                   height: 200,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
+                    ),
                   ),
                 ),
                 Padding(
@@ -66,11 +68,7 @@ class RecipeShimmer extends StatelessWidget {
                             color: Colors.white,
                           ),
                           const Spacer(),
-                          Container(
-                            width: 60,
-                            height: 16,
-                            color: Colors.white,
-                          ),
+                          Container(width: 60, height: 16, color: Colors.white),
                         ],
                       ),
                     ],

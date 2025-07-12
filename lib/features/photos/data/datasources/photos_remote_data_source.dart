@@ -19,7 +19,9 @@ class PhotosRemoteDataSourceImpl implements PhotosRemoteDataSource {
   @override
   Future<DogImage> fetchDogImage() async {
     try {
-      final response = await _dio.get('https://dog.ceo/api/breeds/image/random');
+      final response = await _dio.get(
+        'https://dog.ceo/api/breeds/image/random',
+      );
       return DogImage.fromJson(response.data);
     } on DioException catch (e) {
       throw Exception('Failed to fetch dog image: ${e.message}');

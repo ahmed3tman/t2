@@ -29,9 +29,14 @@ class RecipeFilters extends StatelessWidget {
                       // Cuisine filter
                       PopupMenuButton<String>(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Theme.of(context).colorScheme.outline),
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -46,23 +51,35 @@ class RecipeFilters extends StatelessWidget {
                           ),
                         ),
                         onSelected: (cuisine) {
-                          cubit.filterByCuisine(cuisine == 'All' ? null : cuisine);
+                          cubit.filterByCuisine(
+                            cuisine == 'All' ? null : cuisine,
+                          );
                         },
                         itemBuilder: (context) => [
-                          const PopupMenuItem(value: 'All', child: Text('All Cuisines')),
-                          ...cuisines.map((cuisine) => PopupMenuItem(
-                                value: cuisine,
-                                child: Text(cuisine),
-                              )),
+                          const PopupMenuItem(
+                            value: 'All',
+                            child: Text('All Cuisines'),
+                          ),
+                          ...cuisines.map(
+                            (cuisine) => PopupMenuItem(
+                              value: cuisine,
+                              child: Text(cuisine),
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(width: 8),
                       // Difficulty filter
                       PopupMenuButton<String>(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Theme.of(context).colorScheme.outline),
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -77,14 +94,21 @@ class RecipeFilters extends StatelessWidget {
                           ),
                         ),
                         onSelected: (difficulty) {
-                          cubit.filterByDifficulty(difficulty == 'All' ? null : difficulty);
+                          cubit.filterByDifficulty(
+                            difficulty == 'All' ? null : difficulty,
+                          );
                         },
                         itemBuilder: (context) => [
-                          const PopupMenuItem(value: 'All', child: Text('All Difficulties')),
-                          ...difficulties.map((difficulty) => PopupMenuItem(
-                                value: difficulty,
-                                child: Text(difficulty),
-                              )),
+                          const PopupMenuItem(
+                            value: 'All',
+                            child: Text('All Difficulties'),
+                          ),
+                          ...difficulties.map(
+                            (difficulty) => PopupMenuItem(
+                              value: difficulty,
+                              child: Text(difficulty),
+                            ),
+                          ),
                         ],
                       ),
                     ],

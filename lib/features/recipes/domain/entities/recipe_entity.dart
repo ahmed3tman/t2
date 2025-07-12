@@ -39,21 +39,21 @@ class RecipeEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        ingredients,
-        instructions,
-        prepTimeMinutes,
-        cookTimeMinutes,
-        servings,
-        difficulty,
-        cuisine,
-        caloriesPerServing,
-        tags,
-        userId,
-        image,
-        rating,
-        reviewCount,
-        mealType,
-      ];
+    id,
+    name,
+    ingredients,
+    instructions,
+    prepTimeMinutes,
+    cookTimeMinutes,
+    servings,
+    difficulty,
+    cuisine,
+    caloriesPerServing,
+    tags,
+    userId,
+    image,
+    rating,
+    reviewCount,
+    mealType,
+  ];
 }

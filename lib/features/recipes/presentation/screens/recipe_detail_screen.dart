@@ -7,10 +7,7 @@ import '../../domain/entities/recipe_entity.dart';
 class RecipeDetailScreen extends StatelessWidget {
   final RecipeEntity recipe;
 
-  const RecipeDetailScreen({
-    super.key,
-    required this.recipe,
-  });
+  const RecipeDetailScreen({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +23,7 @@ class RecipeDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Container(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                  child: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                  child: const Center(child: CircularProgressIndicator()),
                 ),
                 errorWidget: (context, url, error) => Container(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
@@ -66,9 +61,21 @@ class RecipeDetailScreen extends StatelessWidget {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      _buildInfoChip(context, Icons.access_time, '${recipe.prepTimeMinutes + recipe.cookTimeMinutes} min'),
-                      _buildInfoChip(context, Icons.people, '${recipe.servings} servings'),
-                      _buildInfoChip(context, Icons.local_fire_department, '${recipe.caloriesPerServing} cal'),
+                      _buildInfoChip(
+                        context,
+                        Icons.access_time,
+                        '${recipe.prepTimeMinutes + recipe.cookTimeMinutes} min',
+                      ),
+                      _buildInfoChip(
+                        context,
+                        Icons.people,
+                        '${recipe.servings} servings',
+                      ),
+                      _buildInfoChip(
+                        context,
+                        Icons.local_fire_department,
+                        '${recipe.caloriesPerServing} cal',
+                      ),
                       _buildInfoChip(context, Icons.speed, recipe.difficulty),
                       _buildInfoChip(context, Icons.restaurant, recipe.cuisine),
                     ],
@@ -93,25 +100,30 @@ class RecipeDetailScreen extends StatelessWidget {
                   Wrap(
                     spacing: 8,
                     children: recipe.mealType
-                        .map((type) => Chip(
-                              label: Text(type),
-                              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                            ))
+                        .map(
+                          (type) => Chip(
+                            label: Text(type),
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primaryContainer,
+                          ),
+                        )
                         .toList(),
                   ),
                   const SizedBox(height: 24),
-                  Text(
-                    'Tags',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
+                  Text('Tags', style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
                     children: recipe.tags
-                        .map((tag) => Chip(
-                              label: Text(tag),
-                              backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-                            ))
+                        .map(
+                          (tag) => Chip(
+                            label: Text(tag),
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.secondaryContainer,
+                          ),
+                        )
                         .toList(),
                   ),
                   const SizedBox(height: 24),
@@ -122,11 +134,13 @@ class RecipeDetailScreen extends StatelessWidget {
                     ),
                     initiallyExpanded: true,
                     children: recipe.ingredients
-                        .map((ingredient) => ListTile(
-                              leading: const Icon(Icons.check_circle_outline),
-                              title: Text(ingredient),
-                              dense: true,
-                            ))
+                        .map(
+                          (ingredient) => ListTile(
+                            leading: const Icon(Icons.check_circle_outline),
+                            title: Text(ingredient),
+                            dense: true,
+                          ),
+                        )
                         .toList(),
                   ),
                   const SizedBox(height: 16),
@@ -143,15 +157,18 @@ class RecipeDetailScreen extends StatelessWidget {
                     ),
                     child: Stepper(
                       physics: const NeverScrollableScrollPhysics(),
-                      controlsBuilder: (context, details) => const SizedBox.shrink(),
+                      controlsBuilder: (context, details) =>
+                          const SizedBox.shrink(),
                       steps: recipe.instructions
                           .asMap()
                           .entries
-                          .map((entry) => Step(
-                                title: Text('Step ${entry.key + 1}'),
-                                content: Text(entry.value),
-                                isActive: true,
-                              ))
+                          .map(
+                            (entry) => Step(
+                              title: Text('Step ${entry.key + 1}'),
+                              content: Text(entry.value),
+                              isActive: true,
+                            ),
+                          )
                           .toList(),
                     ),
                   ),

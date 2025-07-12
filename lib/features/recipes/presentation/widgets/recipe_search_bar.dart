@@ -37,9 +37,7 @@ class _RecipeSearchBarState extends State<RecipeSearchBar> {
                   },
                 )
               : null,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(28),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         ),
         onChanged: (value) {

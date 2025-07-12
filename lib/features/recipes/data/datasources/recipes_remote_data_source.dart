@@ -4,10 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../models/recipe.dart';
 
 abstract class RecipesRemoteDataSource {
-  Future<RecipesResponse> fetchRecipes({
-    required int limit,
-    required int skip,
-  });
+  Future<RecipesResponse> fetchRecipes({required int limit, required int skip});
 }
 
 @Injectable(as: RecipesRemoteDataSource)
@@ -24,10 +21,7 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
     try {
       final response = await _dio.get(
         'https://dummyjson.com/recipes',
-        queryParameters: {
-          'limit': limit,
-          'skip': skip,
-        },
+        queryParameters: {'limit': limit, 'skip': skip},
       );
 
       return RecipesResponse.fromJson(response.data);

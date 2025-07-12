@@ -25,27 +25,19 @@ class _MainScreenState extends State<MainScreen> {
     ),
     BlocProvider(
       create: (context) => getIt<PhotosCubit>()..fetchPhoto(PhotoSource.dog),
-      child: const PhotoScreen(
-        title: 'Dog Photos',
-        source: PhotoSource.dog,
-      ),
+      child: const PhotoScreen(title: 'Dog Photos', source: PhotoSource.dog),
     ),
     BlocProvider(
       create: (context) => getIt<PhotosCubit>()..fetchPhoto(PhotoSource.cat),
-      child: const PhotoScreen(
-        title: 'Cat Photos',
-        source: PhotoSource.cat,
-      ),
+      child: const PhotoScreen(title: 'Cat Photos', source: PhotoSource.cat),
     ),
     BlocProvider(
       create: (context) => getIt<PhotosCubit>()..fetchPhoto(PhotoSource.catGif),
-      child: const PhotoScreen(
-        title: 'Cat GIFs',
-        source: PhotoSource.catGif,
-      ),
+      child: const PhotoScreen(title: 'Cat GIFs', source: PhotoSource.catGif),
     ),
     BlocProvider(
-      create: (context) => getIt<PhotosCubit>()..fetchPhoto(PhotoSource.unsplash),
+      create: (context) =>
+          getIt<PhotosCubit>()..fetchPhoto(PhotoSource.unsplash),
       child: const PhotoScreen(
         title: 'Unsplash Photos',
         source: PhotoSource.unsplash,
@@ -56,10 +48,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
@@ -73,22 +62,10 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(Icons.restaurant_menu),
             label: 'Recipes',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Dog',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Cat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.gif),
-            label: 'Cat GIF',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.photo),
-            label: 'Unsplash',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Dog'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Cat'),
+          BottomNavigationBarItem(icon: Icon(Icons.gif), label: 'Cat GIF'),
+          BottomNavigationBarItem(icon: Icon(Icons.photo), label: 'Unsplash'),
         ],
       ),
     );

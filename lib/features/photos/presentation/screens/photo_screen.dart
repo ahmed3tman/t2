@@ -9,25 +9,16 @@ class PhotoScreen extends StatelessWidget {
   final String title;
   final PhotoSource source;
 
-  const PhotoScreen({
-    super.key,
-    required this.title,
-    required this.source,
-  });
+  const PhotoScreen({super.key, required this.title, required this.source});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text(title), centerTitle: true),
       body: BlocBuilder<PhotosCubit, PhotosState>(
         builder: (context, state) {
           if (state is PhotosLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else if (state is PhotosError) {
             return Center(
               child: Column(
@@ -68,19 +59,20 @@ class PhotoScreen extends StatelessWidget {
                         fit: BoxFit.contain,
                         placeholder: (context, url) => Container(
                           height: 300,
-                          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.surfaceContainerHighest,
                           child: const Center(
                             child: CircularProgressIndicator(),
                           ),
                         ),
                         errorWidget: (context, url, error) => Container(
                           height: 300,
-                          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.surfaceContainerHighest,
                           child: const Center(
-                            child: Icon(
-                              Icons.error,
-                              size: 48,
-                            ),
+                            child: Icon(Icons.error, size: 48),
                           ),
                         ),
                       ),

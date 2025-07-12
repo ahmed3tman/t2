@@ -19,10 +19,7 @@ class PhotosSuccess extends PhotosState {
   final PhotoEntity photo;
   final PhotoSource source;
 
-  const PhotosSuccess({
-    required this.photo,
-    required this.source,
-  });
+  const PhotosSuccess({required this.photo, required this.source});
 
   @override
   List<Object?> get props => [photo, source];
